@@ -18,7 +18,7 @@ class SwaggerDocService(val actorSystem: ActorSystem, val materializer: ActorMat
     Constants.Product,
     "License: Apache License, Version 2.0",
     None,
-    Some(License("Apache License, Version 2.0", "https://github.com/wavesplatform/Waves/blob/master/LICENSE"))
+    Some(License("Apache License, Version 2.0", "https://github.com/localwaves/nodes/blob/master/LICENSE"))
   )
 
   //Let swagger-ui determine the host and port
