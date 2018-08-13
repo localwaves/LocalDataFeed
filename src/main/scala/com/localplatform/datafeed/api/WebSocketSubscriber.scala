@@ -1,4 +1,4 @@
-package com.wavesplatform.datafeed.api
+package com.localplatform.datafeed.api
 
 
 import akka.actor._
@@ -9,9 +9,9 @@ import akka.stream.actor.ActorPublisherMessage.Cancel
 import akka.stream.actor.ActorSubscriberMessage.OnNext
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
-import com.wavesplatform.datafeed.api._
-import com.wavesplatform.datafeed.utils._
-import com.wavesplatform.datafeed.model.TimeSeries
+import com.localplatform.datafeed.api._
+import com.localplatform.datafeed.utils._
+import com.localplatform.datafeed.model.TimeSeries
 
 import scala.util.{Failure, Success, Try}
 
@@ -115,4 +115,3 @@ class WebSocketSubscriber(apiController: ApiController) extends ActorSubscriber 
   }
 
 }
-

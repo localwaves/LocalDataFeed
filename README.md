@@ -1,5 +1,5 @@
-# Waves Data Feed
-Waves Data Feed (WDF) is a REST API and a WebSocket proxy for the Waves platform.
+# Local Data Feed
+Local Data Feed (WDF) is a REST API and a WebSocket proxy for the Local platform.
 The REST API provides real-time and historical market data in raw or OHLCV (candlestick) formats for unconfirmed and confirmed DEX transactions.
 The WebSocket proxy allows you to receive asynchronous notifications of blockchain events.
 
@@ -80,8 +80,8 @@ Response:
 	  "symbol" : "USD",
 	  "assetID" : "Ft8X1v1LTa1ABafufpaCWyVj8KkaxUWE6xBhW6sNFJck"
 	}, {
-	  "symbol" : "WAVES",
-	  "assetID" : "WAVES"
+	  "symbol" : "LOCAL",
+	  "assetID" : "LOCAL"
 	}, {
 	  "symbol" : "WCT",
 	  "assetID" : "DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J"
@@ -134,15 +134,15 @@ Response:
       "firstTradeDay" : 1493251200000,
       "lastTradeDay" : 1493251308864
     }, {
-      "symbol" : "B@/WAVES",
+      "symbol" : "B@/LOCAL",
       "amountAssetID" : "APz41KyoKuBBh8t3oZjqvhbbsg6f63tpZM5Ck5LYx6h",
       "amountAssetName" : "B@nkcoin",
       "amountAssetDecimals" : 8,
       "amountAssetTotalSupply" : "25000000.00000000",
       "amountAssetMaxSupply" : "infinite",
       "amountAssetCirculatingSupply" : "11411669.00000000",
-      "priceAssetID" : "WAVES",
-      "priceAssetName" : "WAVES",
+      "priceAssetID" : "LOCAL",
+      "priceAssetName" : "LOCAL",
       "priceAssetDecimals" : 8,
       "priceAssetTotalSupply" : "100000000.00000000",
       "priceAssetMaxSupply" : "100000000.00000000",
@@ -221,15 +221,15 @@ Response:
       "24h_priceVolume" : "0.01600000",
       "timestamp" : 1498798060195
     }, {
-      "symbol" : "B@/WAVES",
+      "symbol" : "B@/LOCAL",
       "amountAssetID" : "APz41KyoKuBBh8t3oZjqvhbbsg6f63tpZM5Ck5LYx6h",
       "amountAssetName" : "B@nkcoin",
       "amountAssetDecimals" : 8,
       "amountAssetTotalSupply" : "25000000.00000000",
       "amountAssetMaxSupply" : "infinite",
       "amountAssetCirculatingSupply" : "11411669.00000000",
-      "priceAssetID" : "WAVES",
-      "priceAssetName" : "WAVES",
+      "priceAssetID" : "LOCAL",
+      "priceAssetName" : "LOCAL",
       "priceAssetDecimals" : 8,
       "priceAssetTotalSupply" : "100000000.00000000",
       "priceAssetMaxSupply" : "100000000.00000000",
@@ -278,15 +278,15 @@ GET /ticker/{AMOUNT_ASSET}/{PRICE_ASSET}
 # {AMOUNT_ASSET} and {PRICE_ASSET} are asset IDs or asset Symbols
 
 #Example:
-http://localhost:6990/datafeed/ticker/WAVES/BTC
-http://localhost:6990/datafeed/ticker/WAVES/8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS
+http://localhost:6990/datafeed/ticker/LOCAL/BTC
+http://localhost:6990/datafeed/ticker/LOCAL/8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS
 ```
 Response:
 ```
     {
-      "symbol" : "WAVES/BTC",
-      "amountAssetID" : "WAVES",
-      "amountAssetName" : "WAVES",
+      "symbol" : "LOCAL/BTC",
+      "amountAssetID" : "LOCAL",
+      "amountAssetName" : "LOCAL",
       "amountAssetDecimals" : 8,
       "amountAssetTotalSupply" : "100000000.00000000",
       "amountAssetMaxSupply" : "100000000.00000000",
@@ -319,8 +319,8 @@ GET /ticker/{AMOUNT_ASSET}/{PRICE_ASSET}/{FROM}/{TO}    # get trades within the 
     # {FROM} and {TO} are Unix epoch timestamps in milliseconds
 
 #Example:
-http://localhost:6990/datafeed/trades/WAVES/BTC/3
-http://localhost:6990/datafeed/trades/WAVES/BTC/1495296000000/1495296280000
+http://localhost:6990/datafeed/trades/LOCAL/BTC/3
+http://localhost:6990/datafeed/trades/LOCAL/BTC/1495296000000/1495296280000
 ```
 Response:
 ```
@@ -368,7 +368,7 @@ GET /ticker/{AMOUNT_ASSET}/{PRICE_ASSET}/{ADDRESS}/{LIMIT}
     # valid {LIMIT} values are between 1 and 100
 
 #Example:
-http://localhost:6990/datafeed/trades/WAVES/BTC/3PCfUovRHpCoGL54UakGBTSDEXTbmYMU3ib/2
+http://localhost:6990/datafeed/trades/LOCAL/BTC/3PCfUovRHpCoGL54UakGBTSDEXTbmYMU3ib/2
 ```
 Response:
 ```
@@ -409,8 +409,8 @@ GET /candles/{AMOUNT_ASSET}/{PRICE_ASSET}/{TIMEFRAME}/{FROM}/{TO}    # get candl
     # {FROM} and {TO} are Unix epoch timestamps in milliseconds
 
 #Example:
-http://localhost:6990/datafeed/ticker/WAVES/BTC/30/5
-http://localhost:6990/datafeed/candles/WAVES/BTC/1440/1495238400000/1496102400000
+http://localhost:6990/datafeed/ticker/LOCAL/BTC/30/5
+http://localhost:6990/datafeed/candles/LOCAL/BTC/1440/1495238400000/1496102400000
 ```
 Response:
 ```
@@ -811,7 +811,7 @@ Message on balance change:
 {
   "op" : "balance/3P31zvGdh6ai6JK6zZ18TjYzJsa1B83YPoj",
   "msg" : {
-    "WAVES" : 1264213718872765,
+    "LOCAL" : 1264213718872765,
     "28rURQX5YKKVtdg1NBkMZN4iaXMVMr4YUnH3pvQZttzW" : 1,
     "2aNMjB9fe7mKqiG9zws8KvRLLQuKZb3o7vuGixuzwPFX" : 10000,
     "3wqMtvbLgCAHaStSNEoqYRVp1vrrJoaP41DdC5Mfe98L" : 6948,
@@ -893,12 +893,12 @@ Receive notifications of new confirmed or unconfirmed trades for the specified a
 {"op":"subscribe trades"}                                     # subscribe to all trades
 
 #Example:
-{"op":"subscribe trades/WAVES/8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS"}
+{"op":"subscribe trades/LOCAL/8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS"}
 ```
 Message on new trade:
 ```
 {
-  "op" : "trades/WAVES/8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS",
+  "op" : "trades/LOCAL/8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS",
   "msg" : {
     "timestamp" : 1498481625760,
     "id" : "88zw8u1thmyGEm4pRKCXxCkfbMexBeUhCFYTHsJRSxMv",

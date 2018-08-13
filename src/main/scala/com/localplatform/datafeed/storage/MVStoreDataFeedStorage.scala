@@ -1,8 +1,8 @@
-package com.wavesplatform.datafeed.storage
+package com.localplatform.datafeed.storage
 
 import java.io.File
 
-import com.wavesplatform.datafeed.model._
+import com.localplatform.datafeed.model._
 import org.h2.mvstore.{MVMap, MVStore}
 import scala.collection.mutable.ArrayBuffer
 import collection.JavaConverters._
@@ -127,4 +127,3 @@ object MVStoreDataFeedStorage {
   }
 
 }
-

@@ -1,4 +1,4 @@
-package com.wavesplatform.datafeed.api
+package com.localplatform.datafeed.api
 
 import akka.actor._
 import akka.routing.{ActorRefRoutee, AddRoutee, RemoveRoutee}
@@ -79,4 +79,3 @@ class WebSocketPublisher(router: ActorRef) extends ActorPublisher[String] {
       }
   }
 }
-

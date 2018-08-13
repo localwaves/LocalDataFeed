@@ -1,8 +1,8 @@
-package com.wavesplatform.datafeed.model
+package com.localplatform.datafeed.model
 
-import com.wavesplatform.datafeed.NodeApiWrapper
-import com.wavesplatform.datafeed.storage.MVStoreDataFeedStorage
-import com.wavesplatform.datafeed.utils._
+import com.localplatform.datafeed.NodeApiWrapper
+import com.localplatform.datafeed.storage.MVStoreDataFeedStorage
+import com.localplatform.datafeed.utils._
 import play.api.libs.json.{JsObject, Json}
 
 import scala.collection.mutable.ArrayBuffer
@@ -12,7 +12,7 @@ import java.text.DecimalFormat
 import java.util.TimeZone
 import java.text.SimpleDateFormat
 
-import com.wavesplatform.datafeed.settings.WDFSettings
+import com.localplatform.datafeed.settings.WDFSettings
 
 case class AssetPair(settings: WDFSettings, nodeApi: NodeApiWrapper, amountAsset: String, priceAsset: String, DFDB: MVStoreDataFeedStorage, uetx: UnconfirmedETX) extends Logging {
 
@@ -31,10 +31,10 @@ case class AssetPair(settings: WDFSettings, nodeApi: NodeApiWrapper, amountAsset
   val amountAssetIssueTx = nodeApi.get("/transactions/info/" + amountAsset)
   val priceAssetIssueTx = nodeApi.get("/transactions/info/" + priceAsset)
 
-  val amountAssetDecimals = if (amountAsset == "WAVES") 8 else (amountAssetIssueTx \ "decimals").as[Int]
-  val amountAssetName = if (amountAsset == "WAVES") "WAVES" else (amountAssetIssueTx \ "name").as[String]
-  val priceAssetDecimals = if (priceAsset == "WAVES") 8 else (priceAssetIssueTx \ "decimals").as[Int]
-  val priceAssetName = if (priceAsset == "WAVES") "WAVES" else (priceAssetIssueTx \ "name").as[String]
+  val amountAssetDecimals = if (amountAsset == "LOCAL") 8 else (amountAssetIssueTx \ "decimals").as[Int]
+  val amountAssetName = if (amountAsset == "LOCAL") "LOCAL" else (amountAssetIssueTx \ "name").as[String]
+  val priceAssetDecimals = if (priceAsset == "LOCAL") 8 else (priceAssetIssueTx \ "decimals").as[Int]
+  val priceAssetName = if (priceAsset == "LOCAL") "LOCAL" else (priceAssetIssueTx \ "name").as[String]
 
   val amountScale = Math.pow(10, amountAssetDecimals).toLong
   val priceScale = Math.pow(10, priceAssetDecimals).toLong
@@ -49,7 +49,7 @@ case class AssetPair(settings: WDFSettings, nodeApi: NodeApiWrapper, amountAsset
 
 
   def getAssetSupply(assetId: String): (Long, Long, Long) =
-    if (assetId == "WAVES") (1e8.toLong, 1e8.toLong, 1e8.toLong) else {
+    if (assetId == "LOCAL") (1e8.toLong, 1e8.toLong, 1e8.toLong) else {
       val issueTx = nodeApi.get("/transactions/info/" + assetId)
       val assets = (nodeApi.get("/assets/balance/" + (issueTx \ "sender").as[String]) \ "balances").as[List[JsObject]]
       var supply = 0L

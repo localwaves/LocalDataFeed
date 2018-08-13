@@ -1,9 +1,9 @@
-package com.wavesplatform.datafeed
+package com.localplatform.datafeed
 
-import com.wavesplatform.datafeed.utils.WavesAddress
-import com.wavesplatform.datafeed.model._
-import com.wavesplatform.datafeed.utils._
-import com.wavesplatform.datafeed.api._
+import com.localplatform.datafeed.utils.LocalAddress
+import com.localplatform.datafeed.model._
+import com.localplatform.datafeed.utils._
+import com.localplatform.datafeed.api._
 import akka.actor._
 import play.api.libs.json._
 import scala.collection.mutable.Queue
@@ -21,7 +21,7 @@ class Synchronizer(nodeApi: NodeApiWrapper, uetx: UnconfirmedETX, timeseries: Ti
     else false
   }
 
-  WavesAddress.chainId = if (mainnet) 'W'.toByte else 'T'.toByte
+  LocalAddress.chainId = if (mainnet) 'W'.toByte else 'T'.toByte
 
   private def rotate(nodes: List[String]): List[String] = nodes.drop(1) ++ nodes.take(1)
 
@@ -54,7 +54,7 @@ class Synchronizer(nodeApi: NodeApiWrapper, uetx: UnconfirmedETX, timeseries: Ti
       }
       if (tx.keys.contains("assetId")) router ! WebSocketRouter.TMessage (tx, "asset/" + ((tx \ "assetId").validate[String] match {
         case s: JsSuccess[String] => s.get
-        case e: JsError => "WAVES"
+        case e: JsError => "LOCAL"
       }) + "/" + txType)
     }
 
@@ -64,8 +64,8 @@ class Synchronizer(nodeApi: NodeApiWrapper, uetx: UnconfirmedETX, timeseries: Ti
     addresses.foreach(a => {
       try {
         val reqAddrBal = nodeApi.get("/addresses/balance/" + a)
-        val wavesBalance = if (reqAddrBal != JsNull) (reqAddrBal \ "balance").as[Long] else 0
-        var balances = Json.obj("WAVES" -> wavesBalance)
+        val localBalance = if (reqAddrBal != JsNull) (reqAddrBal \ "balance").as[Long] else 0
+        var balances = Json.obj("LOCAL" -> localBalance)
         val reqAssetBal = nodeApi.get("/assets/balance/" + a)
         if (reqAssetBal != JsNull) {
           (reqAssetBal \ "balances").as[List[JsObject]].sortBy(a => (a \ "assetId").as[String]).foreach(asset => {

@@ -1,6 +1,6 @@
-package com.wavesplatform.datafeed.storage
+package com.localplatform.datafeed.storage
 
-import com.wavesplatform.datafeed.model._
+import com.localplatform.datafeed.model._
 import scala.collection.mutable.ArrayBuffer
 
 trait DataFeedStoreI {

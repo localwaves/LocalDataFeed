@@ -1,4 +1,4 @@
-package com.wavesplatform.datafeed.api
+package com.localplatform.datafeed.api
 
 import javax.ws.rs.Path
 
@@ -8,8 +8,8 @@ import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.server.{Directives, Route}
 import akka.http.scaladsl.model.HttpResponse
 import akka.util.Timeout
-import com.wavesplatform.datafeed.model._
-import com.wavesplatform.datafeed.settings.WDFSettings
+import com.localplatform.datafeed.model._
+import com.localplatform.datafeed.settings.WDFSettings
 import io.swagger.annotations._
 import play.api.libs.json._
 import play.api.libs.json.Reads

@@ -1,12 +1,12 @@
-package com.wavesplatform.datafeed.api
+package com.localplatform.datafeed.api
 
-import com.wavesplatform.datafeed.settings.Constants
+import com.localplatform.datafeed.settings.Constants
 import scala.reflect.runtime.universe.Type
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 import com.github.swagger.akka.model.{Info, License}
 import com.github.swagger.akka.{HasActorSystem, SwaggerHttpService}
-import com.wavesplatform.datafeed.settings.WDFSettings
+import com.localplatform.datafeed.settings.WDFSettings
 import io.swagger.models.Swagger
 
 class SwaggerDocService(val actorSystem: ActorSystem, val materializer: ActorMaterializer, val apiTypes: Seq[Type], settings: WDFSettings)

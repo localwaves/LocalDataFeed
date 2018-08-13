@@ -1,10 +1,10 @@
-package com.wavesplatform.datafeed.utils
+package com.localplatform.datafeed.utils
 
 import scorex.crypto.hash.Blake2b256
 import scorex.crypto.hash.Keccak256
 import scorex.crypto.encode.Base58
 
-object WavesAddress {
+object LocalAddress {
 
   var chainId: Byte = 'T'.toByte
 

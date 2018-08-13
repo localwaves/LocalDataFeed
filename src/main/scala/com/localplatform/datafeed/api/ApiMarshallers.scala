@@ -1,4 +1,4 @@
-package com.wavesplatform.datafeed.api
+package com.localplatform.datafeed.api
 
 import scala.util.control.Exception.nonFatalCatch
 import scala.util.control.NoStackTrace

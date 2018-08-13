@@ -1,8 +1,8 @@
-package com.wavesplatform.datafeed.model
+package com.localplatform.datafeed.model
 
-import com.wavesplatform.datafeed.NodeApiWrapper
-import com.wavesplatform.datafeed.settings._
-import com.wavesplatform.datafeed.storage._
+import com.localplatform.datafeed.NodeApiWrapper
+import com.localplatform.datafeed.settings._
+import com.localplatform.datafeed.storage._
 import play.api.libs.json._
 
 import scala.collection.concurrent.TrieMap
@@ -48,4 +48,3 @@ class TimeSeries(settings: WDFSettings, nodeApi: NodeApiWrapper, uetx: Unconfirm
   def setLastSyncedBlock(height: Int) = DFDB.setLastBlock(height)
 
 }
-

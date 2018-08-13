@@ -1,8 +1,8 @@
-package com.wavesplatform.datafeed.api
+package com.localplatform.datafeed.api
 
 import akka.actor._
 import akka.routing.{AddRoutee, RemoveRoutee, Routee}
-import com.wavesplatform.datafeed.utils._
+import com.localplatform.datafeed.utils._
 import play.api.libs.json._
 
 object WebSocketRouter {
